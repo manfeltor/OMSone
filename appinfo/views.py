@@ -4,5 +4,5 @@ from django.shortcuts import render
 
 def base(req):
 
-    return render(req, "basefunc.html")
+    return render(req, "about.html")
 
