@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block variable1 %}
+
+    <form action="{% url 'formcliente' %}" method="post">
+
+        {% csrf_token %}
+
+        <p>nombre: <input type="text" name="nombre"></p>
+        <p>rubro: <input type="text" name="rubro"></p>
+        <p>mail: <input type="text" name="rubro"></p>
+        <p>cliente: <input type="checkbox" name="escliente"></p>
+
+        <button type="submit">Enviar</button>
+
+    </form>
+    
+{% endblock variable1 %}
