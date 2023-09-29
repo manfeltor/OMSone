@@ -2,11 +2,16 @@
 
 {% block variable1 %}
 
+<h3 style="color:midnightblue">index cat 1</h3>
 <ul>
-    <h3>Index category 1</h3>
-    <p>url1</p>
-    <a href="{% url 'home' %}">testlnk1</a>
-    <p>url2</p>
+    <li>
+        <a href="{% url 'home' %}" style="color: maroon;">Pagina de inicio</a>
+    </li>
+    <li>
+        <a href="{% url 'about' %}" style="color:maroon;">Acerca de nosotros</a>
+    </li>
+    
+    
 </ul>
 
 {% endblock variable1 %}
