@@ -12,3 +12,4 @@ class Employee(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
     empresa = Company()
+

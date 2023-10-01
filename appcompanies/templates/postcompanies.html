@@ -3,17 +3,24 @@
 
 {% block variable1 %}
 
-    <form action="{% url 'formcliente' %}" method="post">
+    <form action="{% url 'post_companies' %}" method="post">
 
         {% csrf_token %}
 
         <p>nombre: <input type="text" name="nombre"></p>
         <p>rubro: <input type="text" name="rubro"></p>
-        <p>mail: <input type="text" name="rubro"></p>
+        <p>mail: <input type="text" name="mail"></p>
         <p>cliente: <input type="checkbox" name="escliente"></p>
 
         <button type="submit">Enviar</button>
 
     </form>
+
+    {% if formulario1.errors %}
+    <div class="alert alert-danger">
+    <strong>Error!</strong> Please correct the following errors:<br>
+    {{ formulario1.errors }}
+    </div>
+    {% endif %}
     
 {% endblock variable1 %}
