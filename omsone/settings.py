@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h2^tu7z58zwe34g3f2z6k$61$#rgbmu7-y7poj8fuqdb%(g!ac'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -129,4 +129,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     #os.path.join(BASE_DIR, 'appinfo/templates/static'),
     os.path.join(BASE_DIR, r'omsone\templates\static'),
+    
 ]
+
+ALLOWED_HOSTS = ['127.0.0.1']
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
