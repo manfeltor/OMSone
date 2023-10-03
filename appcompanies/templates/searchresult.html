@@ -12,8 +12,11 @@
             {% endfor %}
         </ul>
     {% else %}
-        <p>No exixten compañias con esas caracteristicas.</p>
+        <p>No existen compañias con esas caracteristicas.</p>
     {% endif %}
+    <a class="text-decoration-none" href="{% url 'search_company' %}">
+        Regresar a formulario de busqueda
+        <i class="bi bi-arrow-right"></i>
 
         
 {% endblock variable1 %}
