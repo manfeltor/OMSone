@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from .models import Company
 from .forms import FormCompany
 
@@ -35,3 +35,17 @@ def post_company(req):
         formulario1 = FormCompany()
         return render(req, "postcompanies.html", {"formulario1": formulario1})
 
+
+def search_company_form(req):
+
+        return render(req, "searchcompany.html")
+
+def get_company(req: HttpResponse):
+    nom = req.GET["nombre"]  # Use get() method with parentheses
+
+    if nom:
+        instance = Company.objects.filter(nombre__contains=nom)
+        context = {"instances": instance}
+        return render(req, "searchresult.html", context)
+    else:
+        return HttpResponse("Debe agregar una camada")

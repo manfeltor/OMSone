@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block variable1 %}
+
+    <p>Resultados de la busqueda de compañias</p>
+
+    
+    {% if instances %}        
+        <ul>
+            {% for instance in instances %}
+                <li>{{instance.nombre}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No exixten compañias con esas caracteristicas.</p>
+    {% endif %}
+
+        
+{% endblock variable1 %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block variable1 %}
+
+    <form action="{% url 'get_company' %}" method="get">
+
+        {% csrf_token %}
+
+        <p>nombre: <input type="text" name="nombre"></p>
+        
+        <button type="submit">Enviar</button>
+
+    </form>
+
+{% endblock variable1 %}

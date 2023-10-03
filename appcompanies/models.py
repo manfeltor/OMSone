@@ -7,6 +7,7 @@ class Company(models.Model):
     rubro = models.CharField(max_length=20)
     mail = models.EmailField(null= True, blank= True)
     escliente = models.BooleanField()
+    
 
 class Employee(models.Model):
     nombre = models.CharField(max_length=40)
