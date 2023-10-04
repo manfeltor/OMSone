@@ -66,9 +66,34 @@ def delete_companies(req):
         instances_to_delete.delete()
     return HttpResponseRedirect('deletecompaniessuccess')
     
-    
+
 def delete_companies_success(req):
 
     all_instances = Company.objects.all()
 
     return render(req, "deletecompaniessuccess.html", {'instances': all_instances})
+
+def update_companies(req, id):
+
+    if req.method == 'POST':
+
+        formulario1 = FormCompany(req.POST)
+        if formulario1.is_valid():
+            compup = Company.objects.get(id=id)
+            data = formulario1.cleaned_data
+            compup.nombre = data["nombre"]
+            compup.rubro = data["rubro"]
+            compup.mail = data["mail"]
+            compup.escliente = data["escliente"]
+            instance = Company.objects.all()
+            context = {"instances": instance}
+
+            return render(req, "postcompaniessuccess.html", context)
+        
+        else:
+            
+            return render(req, "postcompanies.html", {"formulario1": formulario1})             
+    else:
+        
+        formulario1 = FormCompany()
+        return render(req, "postcompanies.html", {"formulario1": formulario1})

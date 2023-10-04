@@ -34,6 +34,7 @@
                         <th>Rubro</th>
                         <th>Mail</th>
                         <th>Tipo</th>
+                        <th>Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +51,11 @@
                                 {% else %}
                                     Proveedor
                                 {% endif %}
+                            </td>
+                            <td>
+                                <button>
+                                    <a href="{% url 'home' %}">Editar registro</a>
+                                </button>
                             </td>
                         </tr>
                     {% endfor %}

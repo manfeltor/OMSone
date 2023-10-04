@@ -1,4 +1,5 @@
 from django import forms
+from .models import Company
 
 class FormCompany(forms.Form):
 
@@ -6,3 +7,9 @@ class FormCompany(forms.Form):
     rubro = forms.CharField(max_length=20)
     mail = forms.EmailField(empty_value="vacio")
     escliente = forms.BooleanField(required=False)
+
+class FormCompanyM(forms.ModelForm):
+
+    class Meta:
+        model=Company
+        fields=("nombre", "rubro", "mail", "escliente")

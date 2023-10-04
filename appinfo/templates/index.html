@@ -4,26 +4,78 @@
 
 <h3 style="color:midnightblue">index cat 1</h3>
 <ul>
-    <li>
-        <a href="{% url 'home' %}" style="color: maroon;">Pagina de inicio</a>
-    </li>
-    <li>
-        <a href="{% url 'about' %}" style="color:maroon;">Acerca de nosotros</a>
-    </li>
-    <li>
-        <a href="{% url 'list_companies' %}" style="color:maroon;">Listado de companias</a>
-    </li>
-    <li>
-        <a href="{% url 'post_companies' %}" style="color:maroon;">agregar compania</a>
-    </li>
-    <li>
-        <a href="{% url 'search_company' %}" style="color:maroon;">buscar compañia</a>
-    </li>
-    <li>
-        <a href="{% url 'list_delete_companies' %}" style="color:maroon;">borrar compañias</a>
-    </li>
-    
-    
+    <table>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+        
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+        
+            th {
+                background-color: #f2f2f2; /* Optional: Background color for header cells */
+            }
+        </style>
+        <thead>
+            <th>pagina</th>
+            <th>descripcion</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <a href="{% url 'home' %}" style="color: maroon;">Pagina de inicio</a>
+            <td>
+                <p>Home!!! es la puerta de entrada a nuestra aplicacion</p>
+            </td>
+            </td>
+        </tr>  
+        <tr>
+            <td>
+                <a href="{% url 'about' %}" style="color:maroon;">Acerca de nosotros</a>
+            </td>
+            <td>
+                <p>En esta pagina encontraras informacion acerca de nosotros y nuestro proyecto</p>
+            </td>
+        </tr>  
+        <tr>
+            <td>
+                <a href="{% url 'list_companies' %}" style="color:maroon;">Listado de companias</a>
+            </td>
+            <td>
+                <p>En esta pagina encontraras listadas las compañias creadas, y podras editarlas</p>
+            </td>
+        </tr>  
+        <tr>
+            <td>
+                <a href="{% url 'post_companies' %}" style="color:maroon;">agregar compania</a>
+            </td>
+            <td>
+                <p>Esta pagina es para la creacion de una nueva compañia en la base de datos</p>
+            </td>
+        </tr>  
+        <tr>
+            <td>
+                <a href="{% url 'search_company' %}" style="color:maroon;">buscar compañia</a>
+            </td>
+            <td>
+                <p>Estas buscando datos de una compañia y no la encuentas? esta es tu pagina!!!</p>
+            </td>
+        </tr>  
+        <tr>
+            <td>
+                <a href="{% url 'list_delete_companies' %}" style="color:maroon;">borrar compañias</a>
+            </td>
+            <td>
+                <p>En esta pagina podras eliminar una ovarias compañias del registro</p>
+            </td>
+        </tr>    
+    </tbody>
+    </table>
 </ul>
 
 {% endblock variable1 %}
