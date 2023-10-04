@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
 from .models import Company
 from .forms import FormCompany
 
@@ -20,12 +20,12 @@ def post_company(req):
         formulario1 = FormCompany(req.POST)
         if formulario1.is_valid():
             data = formulario1.cleaned_data
-            comp = Company(nombre = data["nombre"], rubro = data["rubro"], mail = data["mail"], escliente = data["escliente"])
+            comp = Company(nombre = data["nombre"], rubro = data["rubro"], mail = data["mail"], escliente=data.get("escliente", False))
             comp.save()
             instance = Company.objects.all()
             context = {"instances": instance}
 
-            return render(req, "listcompanies.html", context)
+            return render(req, "postcompaniessuccess.html", context)
         
         else:
             
@@ -40,8 +40,9 @@ def search_company_form(req):
 
         return render(req, "searchcompany.html")
 
+
 def get_company(req: HttpResponse):
-    nom = req.GET["nombre"]  # Use get() method with parentheses
+    nom = req.GET["nombre"]
 
     if nom:
         instance = Company.objects.filter(nombre__contains=nom)
@@ -50,16 +51,24 @@ def get_company(req: HttpResponse):
     else:
         return HttpResponse("Debe agregar una camada")
     
-def delete_company(req, id):
 
-#    print (req.method)
+def list_delete_companies(req):
 
+    all_instances = Company.objects.all()
+    
+    return render(req, "deletecompanies.html", {'instances': all_instances})
+
+
+def delete_companies(req):
     if req.method == 'POST':
+        selected_instances_ids = req.POST.getlist('selected_instances')
+        instances_to_delete = Company.objects.filter(id__in=selected_instances_ids)
+        instances_to_delete.delete()
+    return HttpResponseRedirect('deletecompaniessuccess')
+    
+    
+def delete_companies_success(req):
 
-        comp = Company.objects.get(id = id)
-        comp.delete()
+    all_instances = Company.objects.all()
 
-        comp = Company.objects.all()
-        
-        return render(req, "list_companies.html")
-
+    return render(req, "deletecompaniessuccess.html", {'instances': all_instances})

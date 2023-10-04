@@ -7,9 +7,53 @@
     
     {% if instances %}        
         <ul>
-            {% for instance in instances %}
-                <li>{{instance.nombre}}</li>
-            {% endfor %}
+            <style>
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+            
+                th, td {
+                    border: 1px solid black;
+                    padding: 8px;
+                    text-align: left;
+                }
+            
+                th {
+                    background-color: #f2f2f2; /* Optional: Background color for header cells */
+                }
+            </style>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th></th> <!-- Empty header for the checkbox column -->
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Rubro</th>
+                        <th>Mail</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for instance in instances %}
+                        <tr>
+                            <td><input type="checkbox" name="selected_instances" value="{{ instance.id }}"></td>
+                            <td>{{ instance.id }}</td>
+                            <td>{{ instance.nombre }}</td>
+                            <td>{{ instance.rubro }}</td>
+                            <td>{{ instance.mail }}</td>
+                            <td>
+                                {% if instance.escliente %}
+                                    Cliente
+                                {% else %}
+                                    Proveedor
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </ul>
     {% else %}
         <p>No existen compañias con esas caracteristicas.</p>

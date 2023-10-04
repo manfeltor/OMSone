@@ -6,7 +6,7 @@ class Company(models.Model):
     nombre = models.CharField(max_length=100)
     rubro = models.CharField(max_length=20)
     mail = models.EmailField(null= True, blank= True)
-    escliente = models.BooleanField()
+    escliente = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.nombre}'

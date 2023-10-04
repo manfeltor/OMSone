@@ -23,7 +23,7 @@ handler404 = custom_404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('appinfo.urls')),
-    path('companies', include('appcompanies.urls')),
+    path('companies/', include('appcompanies.urls')),
     #path('/',),
 ]
 
