@@ -7,7 +7,17 @@
         <h2>proveedores hasta ahora</h2>
         <ul>
             {% for instance in instances %}
-                <li>nombre: {{ instance.nombre }}, rubro: {{ instance.rubro }}, mail:{{ instance.mail }}</li>
+                <li>
+                    nombre: {{ instance.nombre }}, 
+                    rubro: {{ instance.rubro }}, 
+                    mail: {{ instance.mail }}, 
+                    tipo:
+                        {% if instance.escliente %}
+                            cliente
+                        {% else %}
+                            proveedor
+                        {% endif %}
+                </li>
             {% endfor %}
         </ul>
     {% else %}

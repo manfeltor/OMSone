@@ -13,7 +13,7 @@ def list_companies(req):
  
 def post_company(req):
 
-    print (req.method)
+#    print (req.method)
 
     if req.method == 'POST':
 
@@ -49,3 +49,17 @@ def get_company(req: HttpResponse):
         return render(req, "searchresult.html", context)
     else:
         return HttpResponse("Debe agregar una camada")
+    
+def delete_company(req, id):
+
+#    print (req.method)
+
+    if req.method == 'POST':
+
+        comp = Company.objects.get(id = id)
+        comp.delete()
+
+        comp = Company.objects.all()
+        
+        return render(req, "list_companies.html")
+

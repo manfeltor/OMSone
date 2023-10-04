@@ -7,10 +7,24 @@ class Company(models.Model):
     rubro = models.CharField(max_length=20)
     mail = models.EmailField(null= True, blank= True)
     escliente = models.BooleanField()
+
+    def __str__(self):
+        return f'{self.nombre}'
+
+    class Meta():
+        verbose_name = 'Companies'
+        verbose_name_plural = 'companies'
     
 
 class Employee(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
     empresa = Company()
+
+    def __str__(self):
+        return f'{self.nombre}'
+
+    class Meta():
+        verbose_name = 'Empleado'
+        verbose_name_plural = 'Empleados'
 
