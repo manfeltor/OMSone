@@ -1,6 +1,10 @@
 from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
-from .models import Company
+from .models import Company, Employee
 from .forms import FormCompany
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -73,6 +77,7 @@ def delete_companies_success(req):
 
     return render(req, "deletecompaniessuccess.html", {'instances': all_instances})
 
+
 def update_company(req, id):
 
     compup = Company.objects.get(id=id)
@@ -105,3 +110,34 @@ def update_company(req, id):
             "escliente": compup.escliente,
         })
         return render(req, "updatecompany.html", {"formulario1": formulario1, "id":compup.id})
+    
+
+class EmployeeListView(ListView):
+    model = Employee
+    template_name = "listemployees.html"
+    context_object_name = "empleados"
+
+class EmployeeDetailView(DetailView):
+    model = Employee
+    template_name = "detailemployee.html"
+    context_object_name = "empleado"
+
+class EmployeeCreateView(CreateView):
+    model = Employee
+    template_name = "postemployee.html"
+    fields = ["nombre", "apellido", "empresa"]
+    success_url = reverse_lazy('post_employee_success')
+
+class EmployeeUpdateView(UpdateView):
+    model = Employee
+    template_name = "updateemployee.html"
+    fields = ['__all__']
+    success_url = reverse_lazy('update_employee_success')
+
+class EmployeeDeleteView(DeleteView):
+    model = Employee
+    template_name = "deleteemployee.html"
+    success_url = reverse_lazy('delete_employee_success')
+
+
+

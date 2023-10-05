@@ -8,8 +8,3 @@ class FormCompany(forms.Form):
     mail = forms.EmailField(empty_value="vacio", error_messages={'invalid':"por favor ingresa un mail valido", 'required' : "por favor, ingresa un mail valido"})
     escliente = forms.BooleanField(required=False)
 
-class FormCompanyM(forms.ModelForm):
-
-    class Meta:
-        model=Company
-        fields=("nombre", "rubro", "mail", "escliente")
