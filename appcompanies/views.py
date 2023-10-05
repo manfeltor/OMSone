@@ -73,27 +73,35 @@ def delete_companies_success(req):
 
     return render(req, "deletecompaniessuccess.html", {'instances': all_instances})
 
-def update_companies(req, id):
+def update_company(req, id):
+
+    compup = Company.objects.get(id=id)
 
     if req.method == 'POST':
 
         formulario1 = FormCompany(req.POST)
         if formulario1.is_valid():
-            compup = Company.objects.get(id=id)
             data = formulario1.cleaned_data
             compup.nombre = data["nombre"]
             compup.rubro = data["rubro"]
             compup.mail = data["mail"]
             compup.escliente = data["escliente"]
-            instance = Company.objects.all()
+            compup.save()
+            instance = Company.objects.get(id=id)
             context = {"instances": instance}
+            print(instance)
 
-            return render(req, "postcompaniessuccess.html", context)
+            return render(req, "updatecompanysuccess.html", context)
         
         else:
             
-            return render(req, "postcompanies.html", {"formulario1": formulario1})             
+            return render(req, "updatecompanysuccess.html", {"formulario1": formulario1})             
     else:
         
-        formulario1 = FormCompany()
-        return render(req, "postcompanies.html", {"formulario1": formulario1})
+        formulario1 = FormCompany(initial={
+            "nombre" : compup.nombre,
+            "rubro": compup.rubro,
+            "mail": compup.mail,
+            "escliente": compup.escliente,
+        })
+        return render(req, "updatecompany.html", {"formulario1": formulario1, "id":compup.id})

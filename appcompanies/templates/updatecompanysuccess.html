@@ -1,0 +1,39 @@
+{% extends 'listcompanies.html' %}
+
+
+{% block variable1com %}
+
+    <h2>Registro correctamente actualizado</h2>
+    
+{% endblock variable1com %}
+
+{% block editvar1 %}
+    
+        <tr>
+            <td><input type="checkbox" name="selected_instances" value="{{ instance.id }}"></td>
+            <td>{{ instance.id }}</td>
+            <td>{{ instance.nombre }}</td>
+            <td>{{ instance.rubro }}</td>
+            <td>{{ instance.mail }}</td>
+            <td>
+                {% if instance.escliente %}
+                    Cliente
+                {% else %}
+                    Proveedor
+                {% endif %}
+            </td>
+        </tr>   
+    
+{% endblock editvar1 %}
+    
+
+    
+
+
+
+
+
+
+    
+    
+    

@@ -38,7 +38,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
+                    {% block editvar1 %}
+                        
                     {% for instance in instances %}
+
+                   
+
                         <tr>
                             <td><input type="checkbox" name="selected_instances" value="{{ instance.id }}"></td>
                             <td>{{ instance.id }}</td>
@@ -52,13 +58,21 @@
                                     Proveedor
                                 {% endif %}
                             </td>
+                    
                             <td>
                                 <button>
-                                    <a href="{% url 'home' %}">Editar registro</a>
+                                    <a href="{% url 'update_company' id=instance.id %}">Editar registro</a>
                                 </button>
                             </td>
+                            
                         </tr>
+                    
+                   
+                        
                     {% endfor %}
+
+                    {% endblock editvar1 %}
+
                 </tbody>
             </table>
             

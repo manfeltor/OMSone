@@ -1,0 +1,15 @@
+{% extends 'listcompanies.html' %}
+
+
+{% block variable1 %}
+
+<form action="{% url 'update_company' id %}" method="post">
+    {% csrf_token %}
+
+    {{formulario1.as_div}}
+
+    <button type="submit"> Actualizar </button>
+</form>
+    
+{% endblock variable1 %}
+    
