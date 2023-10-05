@@ -10,17 +10,22 @@
 {% block editvar1 %}
     
         <tr>
-            <td><input type="checkbox" name="selected_instances" value="{{ instance.id }}"></td>
-            <td>{{ instance.id }}</td>
-            <td>{{ instance.nombre }}</td>
-            <td>{{ instance.rubro }}</td>
-            <td>{{ instance.mail }}</td>
+            <td><input type="checkbox" name="selected_instances" value="{{ instances.id }}"></td>
+            <td>{{ instances.id }}</td>
+            <td>{{ instances.nombre }}</td>
+            <td>{{ instances.rubro }}</td>
+            <td>{{ instances.mail }}</td>
             <td>
-                {% if instance.escliente %}
+                {% if instances.escliente %}
                     Cliente
                 {% else %}
                     Proveedor
                 {% endif %}
+            <td>
+                <button>
+                    <a href="{% url 'list_companies' %}">Regresar a lista de compañias</a>
+                </button>
+            </td>
             </td>
         </tr>   
     
