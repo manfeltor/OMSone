@@ -1,0 +1,14 @@
+{% extends 'listemployees.html' %}
+
+
+{% block variable1com %}
+
+    <h2>Empleados correctamente elmininados</h2>
+    <h3>Empleados remanentes</h3>
+    
+{% endblock variable1com %}
+{% block editvar2 %}
+<button>
+    <a href="{% url 'list_delete_employees' %}" style="align-items: center;">Eliminar mas empleados</a>
+</button>
+{% endblock editvar2 %}

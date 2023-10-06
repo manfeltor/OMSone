@@ -1,0 +1,22 @@
+{% extends 'listemployees.html' %}
+
+{% block variable1com %}
+
+    <h2>Registro correctamente actualizado</h2>
+    
+{% endblock variable1com %}
+
+{% block editvar1 %}
+    
+        <tr>
+            <td><input type="checkbox" name="selected_instances" value="{{ instances.id }}"></td>
+            <td>{{ instance.id }}</td>
+            <td>{{ instance.nombre }}</td>
+            <td>{{ instance.apellido }}</td>
+            <td>{{ instance.empresa }}</td>
+        </tr>   
+        <button>
+            <a href="{% url 'list_employees' %}">Regresar a lista de empleados</a>
+        </button>
+    
+{% endblock editvar1 %}

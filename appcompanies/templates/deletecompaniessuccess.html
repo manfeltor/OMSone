@@ -7,4 +7,8 @@
     <h3>Compañias remanentes</h3>
     
 {% endblock variable1com %}
-    
+{% block editvar2 %}
+<button>
+    <a href="{% url 'list_delete_companies' %}" style="align-items: center;">Eliminar mas compañias</a>
+</button>
+{% endblock editvar2 %}

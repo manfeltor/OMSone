@@ -1,8 +1,8 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
-from .views import list_companies, post_company, search_company_form, get_company, list_delete_companies 
-from .views import delete_companies, delete_companies_success, update_company, post_employee_success
-from .views import EmployeeCreateView, EmployeeListView, EmployeeDetailView, EmployeeUpdateView, EmployeeDeleteView
+from .views import list_companies, post_company, search_company_form, get_company, list_delete_companies, list_delete_employees, update_employee_success
+from .views import delete_companies, delete_companies_success, update_company, post_employee_success, delete_employees_success, delete_employees
+from .views import EmployeeCreateView, EmployeeListView, EmployeeDetailView, EmployeeUpdateView
 
 urlpatterns = [
     path('listcompanies/', list_companies, name="list_companies"),
@@ -18,8 +18,12 @@ urlpatterns = [
     path('detailemployee/', EmployeeDetailView.as_view(), name='detail_employee'),
     path('createemployee/', EmployeeCreateView.as_view(), name='post_employee'),
     path('updateemployee/<pk>', EmployeeUpdateView.as_view(), name='update_employee'),
-    path('deleteemployee/<pk>', EmployeeDeleteView.as_view(), name='delete_employee'),
 
-    path('postemployeesuccess', post_employee_success, name='post_employee_success'),
+    path('postemployeesuccess/', post_employee_success, name='post_employee_success'),
+    path('listdeleteemployees/', list_delete_employees, name='list_delete_employees'),
+    path('deleteemployees/', delete_employees, name='delete_employees'),
+    path('deleteemployeessuccess/', delete_employees_success, name='delete_employees_success'),
+    path('updateemployeesuccess/', update_employee_success, name='update_employee_success'),
+
 
 ]

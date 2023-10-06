@@ -68,7 +68,7 @@ def delete_companies(req):
         selected_instances_ids = req.POST.getlist('selected_instances')
         instances_to_delete = Company.objects.filter(id__in=selected_instances_ids)
         instances_to_delete.delete()
-    return HttpResponseRedirect('deletecompaniessuccess')
+    return HttpResponseRedirect(reverse_lazy('delete_companies_success'))
     
 
 def delete_companies_success(req):
@@ -134,16 +134,35 @@ class EmployeeUpdateView(UpdateView):
     fields = '__all__'
     context_object_name = "instance"
     success_url = reverse_lazy('update_employee_success')
-    
-
-class EmployeeDeleteView(DeleteView):
-    model = Employee
-    template_name = "deleteemployee.html"
-    success_url = reverse_lazy('delete_employee_success')
 
 def post_employee_success(req):
 
     context = Employee.objects.all()
 
     return render(req, 'postemployeesuccess.html', {"instances":context})
+
+def update_employee_success(req):
+
+    context = Employee.objects.all()
+
+    return render(req, 'updateemployeesuccess.html', {"instances":context})
+
+def list_delete_employees(req):
+
+    all_instances = Employee.objects.all()
+    
+    return render(req, "deleteemployees.html", {'instances': all_instances})
+
+def delete_employees(req):
+    if req.method == 'POST':
+        selected_instances_ids = req.POST.getlist('selected_instances')
+        instances_to_delete = Employee.objects.filter(id__in=selected_instances_ids)
+        instances_to_delete.delete()
+    return HttpResponseRedirect(reverse_lazy('delete_employees_success'))
+    
+def delete_employees_success(req):
+
+    all_instances = Employee.objects.all()
+
+    return render(req, "deleteemployeessuccess.html", {'instances': all_instances})
 

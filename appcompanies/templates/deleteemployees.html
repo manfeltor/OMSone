@@ -3,7 +3,7 @@
 
 {% block variable1 %}
 
-<form method="post" action="{% url 'delete_companies' %}">
+<form method="post" action="{% url 'delete_employees' %}">
     {% csrf_token %}
     <h2>Selecciona los registros a eliminar y luego da click en el boton de borrar</h2>
     <ul>
@@ -30,9 +30,8 @@
                     <th></th> <!-- Empty header for the checkbox column -->
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Rubro</th>
-                    <th>Mail</th>
-                    <th>Tipo</th>
+                    <th>Apellido</th>
+                    <th>Empresa</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,26 +40,19 @@
                         <td><input type="checkbox" name="selected_instances" value="{{ instance.id }}"></td>
                         <td>{{ instance.id }}</td>
                         <td>{{ instance.nombre }}</td>
-                        <td>{{ instance.rubro }}</td>
-                        <td>{{ instance.mail }}</td>
-                        <td>
-                            {% if instance.escliente %}
-                                Cliente
-                            {% else %}
-                                Proveedor
-                            {% endif %}
-                        </td>
+                        <td>{{ instance.apellido }}</td>
+                        <td>{{ instance.empresa }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
         
     </ul>
-    <button type="submit" id="deleteButton">Borrar compañias seleccionadas</button>
+    <button type="submit">Borrar empleados seleccionados</button>
 </form>
 <script>
     document.querySelector('form').addEventListener('submit', function(event) {
-        var confirmed = confirm("ALERTA!!! Estas seguro de querer eliminar estas compañias? todos los empleados asociados y sus registros se eliminaran tambien de forma irreversible");
+        var confirmed = confirm("ALERTA!!! Estas seguro de querer eliminar estos empleados? esta accion es irreversible");
         if (!confirmed) {
             event.preventDefault(); // Prevent form submission if not confirmed
         }

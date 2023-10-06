@@ -21,13 +21,12 @@
                 {% else %}
                     Proveedor
                 {% endif %}
-            <td>
-                <button>
-                    <a href="{% url 'list_companies' %}">Regresar a lista de compañias</a>
-                </button>
+            
             </td>
-            </td>
-        </tr>   
+        </tr>
+        <button>
+            <a href="{% url 'list_companies' %}">Regresar a lista de compañias</a>
+        </button>   
     
 {% endblock editvar1 %}
     
