@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+
+{% block variable1 %}
+
+    {% if instances %}
+    {% block variable1com %}
+        <h2>Empleados hasta ahora</h2>
+    {% endblock variable1com %}
+        <ul>
+            <style>
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+            
+                th, td {
+                    border: 1px solid black;
+                    padding: 8px;
+                    text-align: left;
+                }
+            
+                th {
+                    background-color: #f2f2f2; /* Optional: Background color for header cells */
+                }
+            </style>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th></th> <!-- Empty header for the checkbox column -->
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Mail</th>
+                        <th>Empresa</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% block editvar1 %}
+                        
+                    {% for instance in instances %}
+
+                   
+
+                        <tr>
+                            <td><input type="checkbox" name="selected_instances" value="{{ instance.id }}"></td>
+                            <td>{{ instance.id }}</td>
+                            <td>{{ instance.nombre }}</td>
+                            <td>{{ instance.apellido }}</td>
+                            <td>{{ instance.empresa }}</td>
+                            
+                    
+                            <td>
+                                <button>
+                                    <a href="{% url 'update_employee' instance.id %}">Editar registro</a>
+                                </button>
+                            </td>
+                            
+                        </tr>
+                    
+                   
+                        
+                    {% endfor %}
+
+                    {% endblock editvar1 %}
+
+                </tbody>
+            </table>
+            
+        </ul>
+    {% else %}
+        <p>No existen empleados cargados</p>
+    {% endif %}
+
+    
+{% endblock variable1 %}

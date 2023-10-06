@@ -1,0 +1,13 @@
+{% extends 'listemployees.html' %}
+
+{% block variable1 %}
+
+<form action="{% url 'update_employee' instance.id %}" method="post">
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <button type="submit"> Actualizar </button>
+</form>
+    
+{% endblock variable1 %}

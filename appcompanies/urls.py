@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 from .views import list_companies, post_company, search_company_form, get_company, list_delete_companies 
-from .views import delete_companies, delete_companies_success, update_company
+from .views import delete_companies, delete_companies_success, update_company, post_employee_success
 from .views import EmployeeCreateView, EmployeeListView, EmployeeDetailView, EmployeeUpdateView, EmployeeDeleteView
 
 urlpatterns = [
@@ -16,7 +16,10 @@ urlpatterns = [
     
     path('listemployees/', EmployeeListView.as_view(), name='list_employees'),
     path('detailemployee/', EmployeeDetailView.as_view(), name='detail_employee'),
-    path('createemployee/', EmployeeCreateView.as_view(), name='create_employee'),
-    path('updateemployee/', EmployeeUpdateView.as_view(), name='update_employee'),
-    path('deleteemployee/', EmployeeDeleteView.as_view(), name='delete_employee'),
+    path('createemployee/', EmployeeCreateView.as_view(), name='post_employee'),
+    path('updateemployee/<pk>', EmployeeUpdateView.as_view(), name='update_employee'),
+    path('deleteemployee/<pk>', EmployeeDeleteView.as_view(), name='delete_employee'),
+
+    path('postemployeesuccess', post_employee_success, name='post_employee_success'),
+
 ]

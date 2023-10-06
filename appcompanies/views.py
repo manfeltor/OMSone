@@ -115,7 +115,7 @@ def update_company(req, id):
 class EmployeeListView(ListView):
     model = Employee
     template_name = "listemployees.html"
-    context_object_name = "empleados"
+    context_object_name = "instances"
 
 class EmployeeDetailView(DetailView):
     model = Employee
@@ -131,13 +131,19 @@ class EmployeeCreateView(CreateView):
 class EmployeeUpdateView(UpdateView):
     model = Employee
     template_name = "updateemployee.html"
-    fields = ['__all__']
+    fields = '__all__'
+    context_object_name = "instance"
     success_url = reverse_lazy('update_employee_success')
+    
 
 class EmployeeDeleteView(DeleteView):
     model = Employee
     template_name = "deleteemployee.html"
     success_url = reverse_lazy('delete_employee_success')
 
+def post_employee_success(req):
 
+    context = Employee.objects.all()
+
+    return render(req, 'postemployeesuccess.html', {"instances":context})
 

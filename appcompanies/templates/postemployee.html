@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block variable1 %}
+
+    <form action="{% url 'post_employee' %}" method="post">
+
+        {% csrf_token %}
+
+        {{form.as_p}}
+        
+        <button type="submit">Enviar</button>
+
+    </form>
+
+    {% if formulario1.errors %}
+    <div class="alert alert-danger">
+    <strong>Error!</strong> Por favor corrige los siguientes errores:<br>
+    {{ formulario1.errors }}
+    </div>
+    {% endif %}
+    
+{% endblock variable1 %}
