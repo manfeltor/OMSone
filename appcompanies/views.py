@@ -81,11 +81,10 @@ def delete_companies_success(req):
 def update_company(req, id):
 
     compup = Company.objects.get(id=id)
-
     if req.method == 'POST':
-
         formulario1 = FormCompany(req.POST)
         if formulario1.is_valid():
+            print("2")
             data = formulario1.cleaned_data
             compup.nombre = data["nombre"]
             compup.rubro = data["rubro"]
@@ -99,10 +98,8 @@ def update_company(req, id):
             return render(req, "updatecompanysuccess.html", context)
         
         else:
-            
-            return render(req, "updatecompanysuccess.html", {"formulario1": formulario1})             
+            return render(req, "updatecompany.html", {"formulario1": formulario1})             
     else:
-        
         formulario1 = FormCompany(initial={
             "nombre" : compup.nombre,
             "rubro": compup.rubro,

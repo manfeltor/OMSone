@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block variable1 %}
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+
+        {{"formulario1.as_p"}}
+
+    </form>
+
+{% endblock variable1 %}
+    
