@@ -10838,12 +10838,12 @@ textarea.form-control-lg {
 }
 /* estos son los estilos externos que traje: */
 .registration-form-container {
-  width: 300px;
+  width: 900px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px; 
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 10px;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   animation: slide-in 0.5s ease-in-out;
 }
 
@@ -10854,11 +10854,10 @@ textarea.form-control-lg {
 
 .registration-form input,
 .registration-form select {
-  margin-bottom: 15px;
-  padding: 10px;
-  border: none;
+  margin-bottom: 3px;
+  padding: 5px; 
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .registration-form button {
@@ -10866,8 +10865,8 @@ textarea.form-control-lg {
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 18px;
+  padding: 5px 10px;
+  font-size: 20px; 
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -10878,9 +10877,65 @@ textarea.form-control-lg {
 
 @keyframes slide-in {
   0% {
-      transform: translateX(-100%);
+    transform: translateX(-100%);
   }
   100% {
-      transform: translateX(0);
+    transform: translateX(0);
   }
 }
+.password-input {
+  margin-bottom: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: calc(100% - 40px); /* Adjusted input width for the toggle button */
+  display: inline-block;
+}
+
+.toggle-password {
+  background-color: #ffcccb; /* Light red background color for the button */
+  color: #cc0000; /* Dark red text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.toggle-password:hover {
+  background-color: #ff9999; /* Lighter red background color on hover */
+}
+
+/* estilo para indice*/
+
+.custom-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.custom-table th, .custom-table td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: #f2f2f2;
+}
+
+.link-maroon {
+  color: maroon;
+  text-decoration: none;
+}
+
+.link-maroon:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+

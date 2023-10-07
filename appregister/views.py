@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import CustomUserCreationForm
+from django.urls import reverse_lazy
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 
@@ -39,10 +42,17 @@ def registration(req):
             usrn = data["username"]
             formulario1.save()
 
-            return render(req, "registrationsuccess.hmtl", {"username":usrn, "status":"1"})
+            return render(req, "registrationsuccess.html", {"username":usrn, "status":"1"})
         else:
             return render(req, "registrationsuccess.html", {"status":"0"})
     
     else:
         formulario1 = CustomUserCreationForm()
         return render(req, "registration.html", {"instance":formulario1})
+
+
+def list_registered_users(req):
+
+    users = User.objects.all()
+
+    return render(req, "listusers.html", {"instances": users})

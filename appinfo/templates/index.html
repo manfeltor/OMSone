@@ -4,7 +4,7 @@
 
 <h3 style="color:midnightblue">index cat 1</h3>
 <ul>
-    <table>
+    <table class="custom-table">
         <style>
             table {
                 border-collapse: collapse;
@@ -28,7 +28,7 @@
         <tbody>
         <tr>
             <td>
-                <a href="{% url 'home' %}" style="color: maroon;">Pagina de inicio</a>
+                <a href="{% url 'home' %}" style="color: maroon;" class="link-maroon">Pagina de inicio</a>
             <td>
                 <p>Home!!! es la puerta de entrada a nuestra aplicacion</p>
             </td>
@@ -36,7 +36,7 @@
         </tr>  
         <tr>
             <td>
-                <a href="{% url 'registration' %}" style="color: rgb(128, 0, 0);">Registrar</a>
+                <a href="{% url 'registration' %}" style="color: maroon;" class="link-maroon">Registrar</a>
             <td>
                 <p>Registra nuevos usuarios</p>
             </td>
@@ -44,7 +44,15 @@
         </tr>  
         <tr>
             <td>
-                <a href="{% url 'login' %}" style="color: maroon;">Login</a>
+                <a href="{% url 'list_users' %}" style="color: maroon;" class="link-maroon">Listar usuarios</a>
+            <td>
+                <p>Muestra una lista de usuarios creados</p>
+            </td>
+            </td>
+        </tr>  
+        <tr>
+            <td>
+                <a href="{% url 'login' %}" style="color: maroon;" class="link-maroon">Login</a>
             <td>
                 <p>Logueate con tu usuario en esta pagina</p>
             </td>
@@ -52,7 +60,7 @@
         </tr>  
         <tr>
             <td>
-                <a href="{% url 'about' %}" style="color:maroon;">Acerca de nosotros</a>
+                <a href="{% url 'about' %}" style="color: maroon;" class="link-maroon">Acerca de nosotros</a>
             </td>
             <td>
                 <p>En esta pagina encontraras informacion acerca de nosotros y nuestro proyecto</p>
@@ -60,7 +68,7 @@
         </tr>  
         <tr>
             <td>
-                <a href="{% url 'list_companies' %}" style="color:maroon;">Listado de companias</a>
+                <a href="{% url 'list_companies' %}" style="color: maroon;" class="link-maroon">Listado de companias</a>
             </td>
             <td>
                 <p>En esta pagina encontraras listadas las compañias creadas, y podras editarlas</p>
@@ -68,7 +76,7 @@
         </tr>  
         <tr>
             <td>
-                <a href="{% url 'post_companies' %}" style="color:maroon;">agregar compania</a>
+                <a href="{% url 'post_companies' %}" style="color: maroon;" class="link-maroon">agregar compania</a>
             </td>
             <td>
                 <p>Esta pagina es para la creacion de una nueva compañia en la base de datos</p>
@@ -76,7 +84,7 @@
         </tr>  
         <tr>
             <td>
-                <a href="{% url 'search_company' %}" style="color:maroon;">buscar compañia</a>
+                <a href="{% url 'search_company' %}" style="color: maroon;" class="link-maroon">buscar compañia</a>
             </td>
             <td>
                 <p>Estas buscando datos de una compañia y no la encuentas? esta es tu pagina!!!</p>
@@ -84,7 +92,7 @@
         </tr>  
         <tr>
             <td>
-                <a href="{% url 'list_delete_companies' %}" style="color:maroon;">borrar compañias</a>
+                <a href="{% url 'list_delete_companies' %}" style="color: maroon;" class="link-maroon">borrar compañias</a>
             </td>
             <td>
                 <p>En esta pagina podras eliminar una ovarias compañias del registro</p>
@@ -92,7 +100,7 @@
         </tr>
         <tr>
             <td>
-                <a href="{% url 'post_employee' %}" style="color:maroon;">Crear empleados</a>
+                <a href="{% url 'post_employee' %}" style="color: maroon;" class="link-maroon">Crear empleados</a>
             </td>
             <td>
                 <p>Aqui podras crear usuarios para los empleados de tu compañia</p>
@@ -100,7 +108,7 @@
         </tr>
         <tr>
             <td>
-                <a href="{% url 'list_employees' %}" style="color:maroon;">Listar empleados</a>
+                <a href="{% url 'list_employees' %}" style="color: maroon;" class="link-maroon">Listar empleados</a>
             </td>
             <td>
                 <p>En esta pagina podras consultar los empleados creados para las compañias</p>
@@ -108,7 +116,7 @@
         </tr>
         <tr>
             <td>
-                <a href="{% url 'list_delete_employees' %}" style="color:maroon;">Eliminar empleados</a>
+                <a href="{% url 'list_delete_employees' %}" style="color: maroon;" class="link-maroon">Eliminar empleados</a>
             </td>
             <td>
                 <p>Esta pagina te permitira seleccionar y eliminar empleados creados</p>

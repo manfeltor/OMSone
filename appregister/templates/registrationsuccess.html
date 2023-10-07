@@ -1,1 +1,19 @@
 {% extends 'base.html' %}
+
+{% block variable1 %}
+
+{% if status == "1" %}
+    <h2>Usuario {{ username }} correctamente registrado!!!</h2>
+{% else %}
+    <h2>Error!!! Hubo algún problema con el registro</h2>
+{% endif %}
+
+<button>
+    <a href="{% url 'registration' %}" style="align-items: center;">Regresar a formulario de registro</a>
+</button>
+<button>
+    <a href="{% url 'home' %}" style="align-items: center;">Regresar a Home</a>
+</button>    
+    
+{% endblock variable1 %}
+    
