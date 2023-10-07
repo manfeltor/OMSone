@@ -6,8 +6,9 @@
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
 
-        {{"formulario1.as_p"}}
+        {{formulario1.as_p}}
 
+        <button type="submit"> LogIn </button>
     </form>
 
 {% endblock variable1 %}

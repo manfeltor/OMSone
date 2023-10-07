@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block variable1 %}
+<div class="registration-form-container">
+    <form class="registration-form">
+        {{ instance.as_p|linebreaksbr }}
+        <button type="submit">Register</button>
+    </form>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const formContainer = document.querySelector(".registration-form-container");
+    formContainer.style.animation = "slide-in 0.5s ease-in-out";
+});
+</script>
+{% endblock variable1 %}
+
+
+
+    
