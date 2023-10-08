@@ -23,12 +23,14 @@ class CustomUserCreationForm(UserCreationForm):
         model = get_user_model() 
         fields = ('username', 'password1', 'password2') 
 
+
 class CustomUserEditForm(UserChangeForm):
 
     password = forms.CharField(
-        widget=forms.HiddenInput, required=False
+        help_text="",
+        widget=forms.HiddenInput(), required=False
     )
-
+    
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email') 
+        fields = ("first_name", "last_name", "email")

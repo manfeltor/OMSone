@@ -6,7 +6,8 @@
     <form action="{% url 'update_user' %}" method="post">
         {% csrf_token %}
 
-        {{instance.as_p}}
+        {{instance1.as_p}}
+        {{instance2.as_p}}
 
         <button type="submit"> Guardar cambios </button>
     </form>

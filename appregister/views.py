@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import AuthenticationForm, UserChangeForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import AuthenticationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from .forms import CustomUserCreationForm, CustomUserEditForm
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
@@ -90,21 +90,18 @@ def delete_users_success(req):
 def update_user(req):
     usr = req.user
     if req.method == 'POST':
-
-        formulario1 = CustomUserEditForm(req.POST, instance=req.user)
-        if formulario1.is_valid():
-            
-            data = formulario1.cleaned_data
-            usr.first_name = data["first_name"]
-            usr.last_name = data["last_name"]
-            usr.email = data["email"]
-            usr.save()
-            return render(req, "updateusersuccess.html", {"usnm": usr})
+        password_form = PasswordChangeForm(usr, req.POST)
+        user_form = CustomUserEditForm(req.POST, instance=usr)
         
+        if user_form.is_valid() and password_form.is_valid():
+            user_form.save()
+            password_form.save()
+            form = PasswordChangeForm(user=req.user, data=req.POST)
+            update_session_auth_hash(req, form.user)
+            return render(req, "updateusersuccess.html", {"instance1": usr})
         else:
-            return render(req, "updateusersuccess.html", {"usnm": "0"})
-
+            return render(req, "updateuser.html", {"instance1": user_form, "instance2": password_form})
     else:
-
-        formulario1 = CustomUserEditForm(instance=usr)
-        return render(req, "updateuser.html", {"instance":formulario1})
+        user_form = CustomUserEditForm(instance=usr)
+        password_form = PasswordChangeForm(usr)
+        return render(req, "updateuser.html", {"instance1": user_form, "instance2": password_form})
