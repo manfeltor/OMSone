@@ -27,12 +27,18 @@
         <thead>
             <th>ID</th>
             <th>Nombre de usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Mail</th>
         </thead>
         <tbody>   
         {% for instance in instances %}
             <tr>
                 <td>{{ instance.id }}</td>
                 <td>{{ instance.username }}</td>
+                <td>{{ instance.first_name }}</td>
+                <td>{{ instance.last_name }}</td>
+                <td>{{ instance.email }}</td>
             </tr>
         {% endfor %}
         </tbody>

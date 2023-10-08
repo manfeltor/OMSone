@@ -21,16 +21,20 @@ def login1(req):
             psw = data["password"]
             user = authenticate(username = usrn, password = psw)
             if user:
-                
+
+                login(req, user)
                 return render(req, "loginsuccess.html", {"msg": "1", "usr": usrn})
             else:
                 
                 return render(req, "loginsuccess.html", {"msg": "0"})
 
         else:
-            return render(req, "loginsuccess.html", {"msg": "0"})           
+            
+            return render(req, "loginsuccess.html", {"msg": "0"})
+                
     else:
 
+        user=req.user
         formulario1 = AuthenticationForm()
 
         return render(req, "login.html", {"formulario1": formulario1})
@@ -95,11 +99,9 @@ def update_user(req):
             usr.last_name = data["last_name"]
             usr.email = data["email"]
             usr.save()
-
             return render(req, "updateusersuccess.html", {"usnm": usr})
         
         else:
-            
             return render(req, "updateusersuccess.html", {"usnm": "0"})
 
     else:

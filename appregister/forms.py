@@ -26,7 +26,7 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserEditForm(UserChangeForm):
 
     password = forms.CharField(
-        widget=forms.HiddenInput
+        widget=forms.HiddenInput, required=False
     )
 
     class Meta:
