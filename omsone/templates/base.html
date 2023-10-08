@@ -30,6 +30,7 @@
 
                             <li class="nav-item"><a class="nav-link" href="#" onclick="confirmLogout()">Logout</a></li>
                             <p style="color: cornsilk; font-size:larger; padding-top: 5px;padding-left: 5px;border: 1px solid;border-color: cornsilk;">Usuario: {{user.username}}</p>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'update_user' %}">Editar perfil</a></li>
 
                         {% else %}
 

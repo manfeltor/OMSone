@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block variable1 %}
+
+    <form action="{% url 'update_user' %}" method="post">
+        {% csrf_token %}
+
+        {{instance.as_p}}
+
+        <button type="submit"> Guardar cambios </button>
+    </form>
+
+{% endblock variable1 %}

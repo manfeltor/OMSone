@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserChangeForm
 from django.contrib.auth import login, logout, authenticate
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserEditForm
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -21,13 +21,14 @@ def login1(req):
             psw = data["password"]
             user = authenticate(username = usrn, password = psw)
             if user:
-                login(req, user)
+                
                 return render(req, "loginsuccess.html", {"msg": "1", "usr": usrn})
             else:
+                
                 return render(req, "loginsuccess.html", {"msg": "0"})
 
         else:
-            return render(req, "loginsuccess.html", {"msg": "Datos incorrectos, revisa tus datos"})           
+            return render(req, "loginsuccess.html", {"msg": "0"})           
     else:
 
         formulario1 = AuthenticationForm()
@@ -80,3 +81,28 @@ def delete_users_success(req):
     all_instances = User.objects.all()
 
     return render(req, "deleteuserssuccess.html", {'instances': all_instances})
+
+@login_required
+def update_user(req):
+    usr = req.user
+    if req.method == 'POST':
+
+        formulario1 = CustomUserEditForm(req.POST, instance=req.user)
+        if formulario1.is_valid():
+            
+            data = formulario1.cleaned_data
+            usr.first_name = data["first_name"]
+            usr.last_name = data["last_name"]
+            usr.email = data["email"]
+            usr.save()
+
+            return render(req, "updateusersuccess.html", {"usnm": usr})
+        
+        else:
+            
+            return render(req, "updateusersuccess.html", {"usnm": "0"})
+
+    else:
+
+        formulario1 = CustomUserEditForm(instance=usr)
+        return render(req, "updateuser.html", {"instance":formulario1})

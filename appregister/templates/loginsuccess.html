@@ -15,12 +15,12 @@
     {% endif %}
 </div>
 
-    {% if msg == "1" %}
+    {% if msg == 1 %}
 
     <script>
         setTimeout(function() {
                 window.location.href = "{% url 'home' %}";
-        }, 3500); // 5000 milliseconds = 5 seconds
+        }, 2500); // 5000 milliseconds = 5 seconds
     </script>
     
     {% else %}
