@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+
+{% block variable1 %}
+
+<form method="post" action="{% url 'delete_users' %}">
+    {% csrf_token %}
+    
+    {% block varedit1 %}
+        
+    <h2>Selecciona los registros a eliminar y luego da click en el boton de borrar</h2>
+
+    {% endblock varedit1 %}
+
+    <ul>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+        
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+        
+            th {
+                background-color: #f2f2f2; /* Optional: Background color for header cells */
+            }
+        </style>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th></th> <!-- Empty header for the checkbox column -->
+                    <th>ID</th>
+                    <th>Nombre usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                {% for instance in instances %}
+                    <tr>
+                        <td><input type="checkbox" name="selected_instances" value="{{ instance.id }}"></td>
+                        <td>{{ instance.id }}</td>
+                        <td>{{ instance.username }}</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        
+    </ul>
+    
+    {% block editvar2 %}
+        
+    <button type="submit" id="deleteButton">
+        Borrar usuarios seleccionados
+    </button>
+
+    {% endblock editvar2 %}
+
+</form>
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        var confirmed = confirm("ALERTA!!! Estas seguro de querer eliminar estas compañias? todos los empleados asociados y sus registros se eliminaran tambien de forma irreversible");
+        if (!confirmed) {
+            event.preventDefault(); // Prevent form submission if not confirmed
+        }
+    });
+</script>
+
+{% endblock variable1 %}

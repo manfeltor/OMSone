@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import custom_404
+from .views import custom_404, unauthlog
 
 handler404 = custom_404
 
@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('appinfo.urls')),
     path('companies/', include('appcompanies.urls')),
     path('register/', include('appregister.urls')),
+    path('unauthlog/', unauthlog, name="unauthlog"),
     #path('/',),
 ]
 

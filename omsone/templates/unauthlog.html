@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block variable1 %}
+    <div class="login-message-container">
+        <h2>Necesitas estar logueado con tu usuario para acceder a esta funcionalidad</h2>
+        <button class="login-button">
+            <a href="{% url 'login' %}" class="login-link">Ir a la página de inicio de sesión</a>
+        </button>
+    </div>
+{% endblock variable1 %}

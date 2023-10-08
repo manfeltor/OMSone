@@ -1,0 +1,14 @@
+{% extends 'listusers.html' %}
+
+
+{% block variable1com %}
+
+    <h2>Usuarios correctamente elmininados</h2>
+    <h3>Usuarios remanentes</h3>
+    
+{% endblock variable1com %}
+{% block editvar2 %}
+<button>
+    <a href="{% url 'list_delete_users' %}" style="align-items: center;">Eliminar mas empleados</a>
+</button>
+{% endblock editvar2 %}

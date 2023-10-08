@@ -5,6 +5,8 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -14,7 +16,7 @@ def list_companies(req):
 
     return render(req, 'listcompanies.html', {'instances': all_instances})
 
- 
+@login_required
 def post_company(req):
 
 #    print (req.method)
@@ -55,14 +57,14 @@ def get_company(req: HttpResponse):
     else:
         return HttpResponse("Debe agregar una camada")
     
-
+@login_required
 def list_delete_companies(req):
 
     all_instances = Company.objects.all()
     
     return render(req, "deletecompanies.html", {'instances': all_instances})
 
-
+@login_required
 def delete_companies(req):
     if req.method == 'POST':
         selected_instances_ids = req.POST.getlist('selected_instances')
@@ -77,7 +79,7 @@ def delete_companies_success(req):
 
     return render(req, "deletecompaniessuccess.html", {'instances': all_instances})
 
-
+@login_required
 def update_company(req, id):
 
     compup = Company.objects.get(id=id)
@@ -119,13 +121,15 @@ class EmployeeDetailView(DetailView):
     template_name = "detailemployee.html"
     context_object_name = "empleado"
 
-class EmployeeCreateView(CreateView):
+
+class EmployeeCreateView(LoginRequiredMixin ,CreateView):
     model = Employee
     template_name = "postemployee.html"
     fields = ["nombre", "apellido", "empresa"]
     success_url = reverse_lazy('post_employee_success')
 
-class EmployeeUpdateView(UpdateView):
+
+class EmployeeUpdateView(LoginRequiredMixin ,UpdateView):
     model = Employee
     template_name = "updateemployee.html"
     fields = '__all__'
@@ -150,6 +154,7 @@ def list_delete_employees(req):
     
     return render(req, "deleteemployees.html", {'instances': all_instances})
 
+@login_required
 def delete_employees(req):
     if req.method == 'POST':
         selected_instances_ids = req.POST.getlist('selected_instances')

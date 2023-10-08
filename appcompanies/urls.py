@@ -24,6 +24,4 @@ urlpatterns = [
     path('deleteemployees/', delete_employees, name='delete_employees'),
     path('deleteemployeessuccess/', delete_employees_success, name='delete_employees_success'),
     path('updateemployeesuccess/', update_employee_success, name='update_employee_success'),
-
-
 ]

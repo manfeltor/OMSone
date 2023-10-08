@@ -3,8 +3,10 @@
 
 {% block variable1 %}
 
+{% block variable1com %}
     
-    {% for instance in instances %}
+{% endblock variable1com %}
+
     <table class="custom-table">
         <style>
             table {
@@ -23,28 +25,18 @@
             }
         </style>
         <thead>
-            <th>Nombre</th>
-            <th>Accion</th>
+            <th>ID</th>
+            <th>Nombre de usuario</th>
         </thead>
-        <tbody>
-            
-            {% for instance in instances %}
+        <tbody>   
+        {% for instance in instances %}
             <tr>
+                <td>{{ instance.id }}</td>
                 <td>{{ instance.username }}</td>
-                <td>
-                    <button>
-                        <a href="{% url 'home' %}">Editar registro</a>
-                    </button>
-                </td>
-                
-            </tr>          
-            {% endfor %}
-                
+            </tr>
+        {% endfor %}
         </tbody>
+    </table>
 
-        
-    {% endfor %}
-        
-    
 {% endblock variable1 %}
     
