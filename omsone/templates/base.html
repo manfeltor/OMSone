@@ -28,6 +28,12 @@
                         <li class="nav-item"><a class="nav-link scroll-link" href="#contactForm">Contacto</a></li>
                         {% if user.is_authenticated %}
 
+                        {% if user.is_authenticated %}
+                        {% if url_avatar %}
+                            <img src="{{url_avatar}}" height="30px" alt="avatar">  
+                        {% else %}
+                            <img src="{{url_avatar}}" height="30px" alt="avatar">         
+                        {% endif %}
                             <li class="nav-item"><a class="nav-link" href="#" onclick="confirmLogout()">Logout</a></li>
                             <p style="color: cornsilk; font-size:larger; padding-top: 5px;padding-left: 5px;border: 1px solid;border-color: cornsilk;">Usuario: {{user.username}}</p>
                             <li class="nav-item"><a class="nav-link" href="{% url 'update_user' %}">Editar perfil</a></li>
@@ -44,26 +50,36 @@
                 </div>
             </div>
         </nav>
+        
+        {% block error1 %}
+
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-5">
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-6">
                         <div class="text-center my-5">
-                            <h1 class="display-5 fw-bolder text-white mb-2">Administra tu negocio de forma simple y eficiente</h1>
-                            <p class="lead text-white-50 mb-4">Rediseña y personaliza tu modelo de negocio de forma practica con las innovadoras herramientas que te ofrece OMSone diseñado en el robusto y confiable motor de aplicaciones Django, escrito en lenguaje Python, ideal para el manejo de bases de datos y analisis estadistico</p>
+                            {% if user.is_authenticated %}
+                            <h1 class="display-5 fw-bolder text-white mb-2">Un gusto tenerte aca {{user.username}}</h1>
+                            <p class="lead text-white-50 mb-4">Trabajemos juntos y logremos mas precicion y eficiencia, por donde ahora?</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="2">comencemos</a>
-                                <a class="btn btn-outline-light btn-lg px-4" href="1">mas sobre el motor</a>
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="2">Modulo de order management</a>
+                                <a class="btn btn-outline-light btn-lg px-4" href="1">Modulo de metricas</a>
                             </div>
+                            {% else %}
+                            <h1 class="display-5 fw-bolder text-white mb-2">Administra tu negocio de forma simple y eficiente</h1>
+                            <p class="lead text-white-50 mb-4">Rediseña y personaliza tu modelo de negocio de forma practica con las innovadoras herramientas que te ofrece OMSone diseñado en el robusto y confiable motor de aplicaciones Django, escrito en lenguaje Python, ideal para el manejo de bases de datos y analisis estadistico.</p>
+                            {% endif %}
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </header>
 
-        {% block variable1 %}
+        {% endblock error1 %}
 
+        {% block variable1 %}
 
         <!-- Features section-->
         <section class="py-5 border-bottom" id="features">

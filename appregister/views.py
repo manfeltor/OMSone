@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from .models import Avatar
 
 
 # Create your views here.
@@ -105,3 +106,7 @@ def update_user(req):
         user_form = CustomUserEditForm(instance=usr)
         password_form = PasswordChangeForm(usr)
         return render(req, "updateuser.html", {"instance1": user_form, "instance2": password_form})
+    
+def agg_avatar(req):
+
+    avatar = Avatar.objects.get(user = req.user)
