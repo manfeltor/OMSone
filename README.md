@@ -128,7 +128,7 @@ en navegador...
 ```
 ## pautas de contribución:
 
-Este pretende ser un proyecto abierto y gratuito en su version predeterminada, pensado para aportar herramienta, acercar tecnologia y generar oportunidades a todos aquellos a quienes pueda generar un valor agregado, pensado principalmente para PYMEs.
+Este pretende ser un proyecto abierto y gratuito en su version predeterminada, pensado para aportar herramientas, acercar tecnologias y generar oportunidades a todos aquellos a quienes pueda generar un valor agregado, pensado principalmente para PYMEs.
 
 Recibimos con brazos abiertos colaboradores de toda la comunidad. para recibir mas pautas sobre la colaboracion en este proyecto contactame a manfeltor@live.com
 
