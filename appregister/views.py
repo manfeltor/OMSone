@@ -108,16 +108,33 @@ def update_user(req):
     
 def agg_avatar(req):
     
-    avatar_instance = Avatar.objects.get(user=req.user)
-
     if req.method == 'POST':
-        
-        formulario1 = AvatarFormulario(req.POST, req.FILES, instance=avatar_instance)
-        if formulario1.is_valid():
-            formulario1.save()
-            return render(req, "aggavatar.html", {"instance": "1"})
-        else:
-            return render(req, "aggavatar.html", {"instance": "0"})
+
+        try:
+            avatar_instance = Avatar.objects.get(user=req.user)
+            formulario1 = AvatarFormulario(req.POST, req.FILES, instance=avatar_instance)
+            if formulario1.is_valid():
+                formulario1.save()
+                return render(req, "aggavatar.html", {"instance": "1"})
+            else:
+                return render(req, "aggavatar.html", {"instance": "0"})
+
+        except:
+            miFormulario = AvatarFormulario(req.POST, req.FILES)
+
+            if miFormulario.is_valid():
+            
+                data = miFormulario.cleaned_data
+
+                avatar = Avatar(user=req.user, imagen=data["imagen"])
+
+                avatar.save()
+
+                return render(req, "aggavatar.html", {"instance": "1"})
+
+            else:
+
+                return render(req, "aggavatar.html", {"instance": "0"})
 
     else:
 

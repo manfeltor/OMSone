@@ -9,4 +9,4 @@ def get_user_avatar_url(user_id):
         avatar = Avatar.objects.get(user_id=user_id)
         return avatar.imagen.url
     except Avatar.DoesNotExist:
-        return "/path/to/default/avatar.png"
+        return "Untitled.png"
