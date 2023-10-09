@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         {% load static %}
+        {% load custom_tags %}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -26,22 +27,20 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Indice</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Acerca</a></li>                           
                         <li class="nav-item"><a class="nav-link scroll-link" href="#contactForm">Contacto</a></li>
-                        {% if user.is_authenticated %}
+                        
 
-                        {% if user.is_authenticated %}
-                        {% if url_avatar %}
-                            <img src="{{url_avatar}}" height="30px" alt="avatar">  
-                        {% else %}
-                            <img src="{{url_avatar}}" height="30px" alt="avatar">         
-                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                            <!-- {% if user.avatar %}
+                                <img src="{{ user.avatar.url }}" height="40px" alt="User Avatar">  
+                            {% else %}
+                                <img src="media\avatars\Untitled.png" height="40px" alt="Default Avatar">  
+                            {% endif %} -->
+                            <img src="{% get_user_avatar_url user.id %}" height="40px" alt="User Avatar">
+                            <p style="color: cornsilk; font-size:larger; padding-top: 9px;padding-left: 5px;border: 1px solid;border-color: cornsilk;">Usuario: {{user.username}}</p>
                             <li class="nav-item"><a class="nav-link" href="#" onclick="confirmLogout()">Logout</a></li>
-                            <p style="color: cornsilk; font-size:larger; padding-top: 5px;padding-left: 5px;border: 1px solid;border-color: cornsilk;">Usuario: {{user.username}}</p>
                             <li class="nav-item"><a class="nav-link" href="{% url 'update_user' %}">Editar perfil</a></li>
-
                         {% else %}
-
                             <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-
                         {% endif %}
                         
                         <!-- aca esta el boton services, pero como hacermos-->
