@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block variable1 %}
+
+
+{% if instance == "0" %}
+
+    <h2>Parece que hubo un problema al cargar tu avatar.</h2>
+    <h2>revisa tu imagen y datos y luego <a href="agg_avatar">vuelve a intentarlo</a></h2>
+
+{% elif instance == "1" %}
+
+    <h2>Avatar modificado de forma correcta!!!!</h2>
+    <button>
+        <a href="{% url 'home' %}" style="align-items: center;">Regresar a Home</a>
+    </button>
+
+{% else %}
+
+    <div class="registration-form-container" >
+        <form action="{% url 'agg_avatar' %}" class="registration-form" id="registration-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ instance.as_p }}
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const formContainer = document.querySelector(".registration-form-container");
+        formContainer.style.animation = "slide-in 0.5s ease-in-out";
+    });
+    </script>
+
+{% endif %}
+
+{% endblock variable1 %}
+    

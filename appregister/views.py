@@ -1,13 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.forms import AuthenticationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
-from .forms import CustomUserCreationForm, CustomUserEditForm
+from .forms import CustomUserCreationForm, CustomUserEditForm, AvatarFormulario
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .models import Avatar
-
 
 # Create your views here.
 
@@ -108,5 +107,19 @@ def update_user(req):
         return render(req, "updateuser.html", {"instance1": user_form, "instance2": password_form})
     
 def agg_avatar(req):
+    
+    avatar_instance = Avatar.objects.get(user=req.user)
 
-    avatar = Avatar.objects.get(user = req.user)
+    if req.method == 'POST':
+        
+        formulario1 = AvatarFormulario(req.POST, req.FILES, instance=avatar_instance)
+        if formulario1.is_valid():
+            formulario1.save()
+            return render(req, "aggavatar.html", {"instance": "1"})
+        else:
+            return render(req, "aggavatar.html", {"instance": "0"})
+
+    else:
+
+        formulario1 = AvatarFormulario()
+        return render(req, "aggavatar.html", {"instance": formulario1})

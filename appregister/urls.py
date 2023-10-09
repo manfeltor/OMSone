@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import login1, registration, list_registered_users, list_delete_users, delete_users, delete_users_success, update_user
+from .views import login1, registration, list_registered_users, list_delete_users, delete_users, delete_users_success, update_user, agg_avatar
 from django.contrib.auth.views import LogoutView
 from django.urls import reverse_lazy
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('deleteusers/', delete_users, name="delete_users"),
     path('deleteuserssuccess/', delete_users_success, name="delete_users_success"),
     path('updateuser/', update_user, name="update_user"),
+    path('aggavatar/', agg_avatar, name="agg_avatar"),
 ]
