@@ -36,23 +36,65 @@ Nuestro proyecto, **OMSone**, apunta a ser un sistema de gestión de pedidos rob
 
 **lib:**
 ```bash
-  asgiref==3.7.2
-  certifi==2023.7.22
-  distlib==0.3.7
-  Django==4.2.4
-  filelock==3.12.3
-  numpy==1.25.2
-  pandas==2.1.0
-  Pillow==10.0.1
-  pipenv==2023.9.1
-  platformdirs==3.10.0
-  python-dateutil==2.8.2
-  pytz==2023.3
-  regex==2023.8.8
-  six==1.16.0
-  sqlparse==0.4.4
-  tzdata==2023.3
-  virtualenv==20.24.4
+  absl-py==2.0.0
+asgiref==3.7.2
+astunparse==1.6.3
+cachetools==5.3.1
+certifi==2023.7.22
+charset-normalizer==3.3.0
+click==8.1.7
+colorama==0.4.6
+contourpy==1.1.1
+cycler==0.12.1
+distlib==0.3.7
+Django==4.2.4
+filelock==3.12.3
+flatbuffers==23.5.26
+fonttools==4.43.1
+gast==0.5.4
+google-auth==2.23.2
+google-auth-oauthlib==1.0.0
+google-pasta==0.2.0
+grpcio==1.59.0
+h5py==3.10.0
+idna==3.4
+joblib==1.3.2
+keras==2.14.0
+kiwisolver==1.4.5
+libclang==16.0.6
+Markdown==3.5
+MarkupSafe==2.1.3
+matplotlib==3.8.0
+ml-dtypes==0.2.0
+nltk==3.8.1
+numpy==1.25.2
+oauthlib==3.2.2
+opt-einsum==3.3.0
+packaging==23.2
+pandas==2.1.0
+Pillow==10.0.1
+pipenv==2023.9.1
+platformdirs==3.10.0
+protobuf==4.24.4
+pyasn1==0.5.0
+pyasn1-modules==0.3.0
+pyparsing==3.1.1
+python-dateutil==2.8.2
+pytz==2023.3
+regex==2023.8.8
+requests==2.31.0
+requests-oauthlib==1.3.1
+rsa==4.9
+seaborn==0.13.0
+sqlparse==0.4.4
+termcolor==2.3.0
+tqdm==4.66.1
+typing_extensions==4.8.0
+tzdata==2023.3
+urllib3==2.0.6
+virtualenv==20.24.4
+Werkzeug==3.0.0
+wrapt==1.14.1
 ```
 ## Instalación en Local
 
@@ -86,7 +128,7 @@ en navegador...
 ```
 ## pautas de contribución:
 
-Este pretende ser un proyecto abierto y gratuito en su version predeterminada, pensado para aportar herramienta, acercar tecnologia y generar oportunidades a todos aquellos a quienes pueda generar un valor agregado, pensado principalmente para PYMEs.
+Este pretende ser un proyecto abierto y gratuito en su version predeterminada, pensado para aportar herramientas, acercar tecnologias y generar oportunidades a todos aquellos a quienes pueda generar un valor agregado, pensado principalmente para PYMEs.
 
 Recibimos con brazos abiertos colaboradores de toda la comunidad. para recibir mas pautas sobre la colaboracion en este proyecto contactame a manfeltor@live.com
 
